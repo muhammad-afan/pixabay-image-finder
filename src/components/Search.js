@@ -1,7 +1,7 @@
 import {
     Container,
+    Typography,
     Pagination,
-    PaginationItem,
     Stack,
 } from "@mui/material";
 import "../App.css";
@@ -34,27 +34,10 @@ const Search = () => {
                         />
                     </SearchWrapper>
                 </Stack>
-                {/* <br /> */}
-                {/* <FormControl
-                    sx={{ m: 1, width: "15%", color: "#fff" }}
-                    variant="standard"
-                >
-                    <InputLabel id="demo-customized-select-label">Amount</InputLabel>
-                    <Select
-                        name="amount"
-                        value={state.amount || 15}
-                        onChange={onAmountChange}
-                    >
-                        <MenuItem value={5}>5</MenuItem>
-                        <MenuItem value={10}>10</MenuItem>
-                        <MenuItem value={15}>15</MenuItem>
-                        <MenuItem value={30}>30</MenuItem>
-                        <MenuItem value={50}>50</MenuItem>
-                    </Select>
-                </FormControl> */}
                 <br />
-
-                {loading && state.searchText !== "" ? (
+                {state.images.length === 0 && state.searchText !== "" ? (
+                    <Typography>There is nothing to show</Typography>
+                ) : loading && state.searchText !== "" ? (
                     <div
                         style={{
                             display: "flex",
@@ -73,32 +56,30 @@ const Search = () => {
                     </div>
                 ) : state.images.length > 0 ? (
                     <>
-                        <Stack sx={{
-                            flexGrow: 1,
-                            overflow: "hidden",
-                            height: "100%",
-                        }} direction={'column'}>
+                        <Stack
+                            sx={{
+                                flexGrow: 1,
+                                overflow: "hidden",
+                                height: "100%",
+                            }}
+                            direction={"column"}
+                        >
                             <ImageResult images={state.images} />
                         </Stack>
                     </>
                 ) : null}
-                {state.searchText !== "" ? (
+                {state.searchText !== "" && state.images.length !== 0 ? (
                     <Stack
                         direction={"row"}
                         alignItems={"center"}
                         justifyContent={"center"}
                         sx={{ mt: "50px", mb: "35px" }}
                     >
-                        {/* <Pagination count={10} color="secondary" onChange={handleChange} /> */}
-                        <Pagination
-                            count={10}
-                            onChange={handleChange}
-                            color="primary"
-                        />
+                        <Pagination count={10} onChange={handleChange} color="primary" disabled={state.images.length < 15} />
                     </Stack>
                 ) : null}
             </Container>
-        </div >
+        </div>
     );
 };
 

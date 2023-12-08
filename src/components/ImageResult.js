@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import {
-    Box,
     Button,
     Dialog,
     DialogActions,
@@ -11,7 +10,6 @@ import {
     ImageListItemBar,
     Slide,
     Stack,
-    useTheme,
 } from "@mui/material";
 import {
     ZoomIn,
@@ -27,7 +25,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const ImageResult = ({ images }) => {
-    const theme = useTheme();
     const {
         cols,
         open,
