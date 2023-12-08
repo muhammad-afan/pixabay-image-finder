@@ -36,7 +36,7 @@ const Search = () => {
                 </Stack>
                 <br />
                 {state.images.length === 0 && state.searchText !== "" ? (
-                    <Typography>There is nothing to show</Typography>
+                    <Typography variant="h4">There is nothing to show</Typography>
                 ) : loading && state.searchText !== "" ? (
                     <div
                         style={{
